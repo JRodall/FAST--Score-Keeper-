@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Welcome Judge
+{% endblock %}
+
+{% block main %}
+
+<div class="container-fluid" >
+    <h1> Welcome to the <b>F.A.S.T</b> Scoring App !!</h1>
+    <br>
+    <h3 style= "padding: 25px 50px 75px;">This website will help you host, organize, and score any type of action sport competition in an easy and efficient way. Start by clicking on the<b style="color:#242424">"New Event"</b> option below to begin creating your competition event:</h3>
+    </div>
+    <div class="d-grid gap-2 col-6 mx-auto">
+        <a class = "btn btn-secondary" href="/create" id="createbtn"><h2>Create New Event</h2></a>
+    </div>
+
+    <br>
+
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">Events
+            </button>
+          </h2>
+          <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">Placeholder content for this accordion, This will list all previously scored event this judge has participated in scoring.</div>
+          </div>
+        </div>
+    </div>
+
+{% endblock %}

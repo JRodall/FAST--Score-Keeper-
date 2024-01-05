@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}
+     Event Ready
+{% endblock %}
+
+
+{% block main %}
+<div class="header" style="margin-top: 15px; margin-bottom: 3px;">
+     <h1 name="event_name"><b>{{ event_name }}</b> is ready to score!!</h1>
+     <hr class="border border-secondary border-3 opacity-85;" style="color:#3b3838">
+
+     <div class="d-flex justify-content-center align-items-center" style="height: 35vh;">
+          <div class="card text-white bg-secondary mb-3"style="max-width: 30rem;">
+               <div class="card-header"><h4><b>{{ event_name }}</b></h4></div>
+               <div class="card-body">
+               <h5 class="card-title"><p><strong>Total Competitors:</strong> <h1><b>{{ competitor_count }}</b></h1></p></h5>
+               <p class="card-text"><strong>Judges scoring this event:  {{ judge_count }}</strong></p>
+          </div>
+     </div>
+</div>
+    <p><a href="{{ url_for('eventscore') }}" class="btn btn-secondary" name='eventscore' style="width: 20rem; margin-top: 0px;">Go to Event</a></p>
+
+{% endblock %}

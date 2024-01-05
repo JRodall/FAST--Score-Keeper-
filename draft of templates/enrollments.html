@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Enroll Competitors
+{% endblock %}
+
+{% block main %}
+
+<div class="header" style="margin-top: 15px;">
+    <h1 name="event_name"> {{ event_name }}</h1>
+    <hr class="border border-secondary border-3 opacity-85;" style="color:#3b3838">
+</div>
+<h3><b>Beguin Enrolling</b> competitors for this event</h3>
+<div>
+    <form action="/enrollment" method='post' style= "margin-top: 25px; margin-bottom: 25px;">
+        {% for i in range(competitor_count) %}
+        <div class="form-row">
+            <h5>Competitor # {{ i + 1 }} </h5>
+            <div class="input-group mb-3">
+                <input style= "margin-top: 15px; margin-left: 30px; margin-right: 10px;" type="text" placeholder="Competitor Name" name="name{{ i + 1 }}" class="form-control">
+                <input style= "margin-top: 15px;" type="text" placeholder="Nick Name" name="nick{{ i + 1 }}" class="input-group-text">
+                <input style= "margin-top: 15px;" type="number" placeholder="Age" name="age{{ i + 1 }}" min="1" max="70" class="form-control">
+                <input style= "margin-top: 15px; margin-right: 40px" type="text" placeholder="origin" name="origin{{ i + 1 }}" class="input-group-text">
+           </div>
+        </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-secondary" style= "margin-top: 25px;"><b>Enroll Competitors</b></button>
+    </form>
+
+</div>
+
+
+{% endblock %}

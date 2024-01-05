@@ -1,0 +1,278 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Create Event
+{% endblock %}
+
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+
+<style>
+    body {
+        font-family: 'Raleway', sans-serif;
+    }
+
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .tab {
+        display: none;
+    }
+
+    .btn-container {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .btn-container button {
+        margin: 5px;
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+
+    .step-container {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .step {
+        width: 33.33%;
+        height: 10px;
+        background-color: #ddd;
+        margin: 0;
+        float: left;
+    }
+
+    .step.active {
+        background-color: #4CAF50;
+    }
+
+    .step.finish {
+        background-color: #4CAF50;
+    }
+</style>
+
+{% block main %}
+<div class="container">
+    <h1 style="margin-bottom: 10px;">Create a New Event</h1>
+    <form style="margin-top: 10px;" action="/create" method="post" id="regForm">
+
+        <div class="tab">
+            <h2>Event Name </h2>
+            <label for="eventName" class="form-label"><h3>What will be the <b>Name</b> of this event?</h3></label>
+            <input type="text" class="form-control" id="eventName" name="eventName" placeholder="Enter the event name" required>
+            <div class="form-text">Provide a unique name for your event competition. Consider adding the discipline, location, and year of the venue.</div>
+        </div>
+
+        <div class="tab">
+            <h2>Event General</h2>
+            <label for="eventDate" class="form-label"><h3><b>When</b> is this event taking place?</h3></label>
+            <input type="date" class="form-control" id="eventDate" name="eventDate" required size="width: ">
+            <div class="form-text">Use the calendar dial or just type in the date.</div>
+
+            <label for="sport" class="form-label"><h3>What sport, <b>Discipline</b>, or category is the event for?</h3></label>
+            <select class="form-select" id="sport" name="sport" required>
+                <option value="" selected disabled>Select a discipline</option>
+                <option value="BMX Dirt">BMX Dirt</option>
+                <option value="BMX Flat">BMX Flat</option>
+                <option value="BMX Park">BMX Park</option>
+                <option value="BMX Street">BMX Street</option>
+                <option value="Inline Park">Inline Park</option>
+                <option value="Inline Street">Inline Street</option>
+                <option value="MTB Slope">MTB Slope</option>
+                <option value="Scooter">Scooter</option>
+                <option value="Skateboard Park">Skateboard Park</option>
+                <option value="Skateboard Street">Skateboard Street</option>
+                <option value="Snowboard">Snowboard</option>
+                <option value="Other">Other (Specify in Title)</option>
+            </select>
+            <div class="form-text">What kind of sport or discipline is this event for ?.</div>
+        </div>
+
+        <div class="tab">
+            <h2>Contest Details</h2>
+            <label for="competitorCount" class="form-label"><h3>How many <b>Competitors</b> will participate?</h3></label>
+            <input type="number" class="form-control" id="competitorCount" name="competitorCount" placeholder="Enter the number of competitors" required>
+            <br>
+            <label for="runs" class="form-label"><h3>How many <b>Runs</b> will each competitor have?</h3> <p></p></label>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="runs" id="run1" value="1" required>
+                <label class="form-check-label" for="run1">1 Run</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="runs" id="run2" value="2">
+                <label class="form-check-label" for="run2">2 Runs</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="runs" id="run3" value="3">
+                <label class="form-check-label" for="run3">3 Runs</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="runs" id="run4" value="4">
+                <label class="form-check-label" for="run4">4 Runs</label>
+            </div>
+        </div>
+
+        <div class="tab">
+            <h2>Scoring Details</h2>
+            <label for="judgeCount" class="form-label"><h3>How many <b>Judges</b> will be scoring the competition?</h3><p></p></label>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="judgecount" id="judge2" value="2" required>
+                <label class="form-check-label" for="judge2">2 Judges</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="judgecount" id="judge3" value="3">
+                <label class="form-check-label" for="judge3">3 Judges</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="judgecount" id="judge4" value="4">
+                <label class="form-check-label" for="judge4">4 Judges</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="judgecount" id="judge5" value="5">
+                <label class="form-check-label" for="judge5">5 Judges</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="judgecount" id="judge6" value="6">
+                <label class="form-check-label" for="judge6">6 Judges</label>
+            </div>
+
+            <div id="judgeNames">
+            </div>
+
+            <label for="jaggregatekind" class="form-label"><h3>How will the judges scores be aggregated?</h3></label>
+            <select class="form-select" id="jaggregatekind" name="jaggregatekind" required>
+                <option value="" selected disabled>Select an Aggregated Score Type</option>
+                 <!--  There was an average of judges option in the plan.was removed, found it too difficultto implement -->
+                 <option value="Sum">Sum of Judges scores</option>                <!--  fields -->
+
+            </select>
+            <br>
+            <label for="scoringtype" class="form-label"><h3>What type of scoring will be used?</h3></label>
+            <select class="form-select" id="scoringtype" name="scoringtype" required>
+                <option value="" selected disabled>Select a Scoring Type</option>
+                <option value="TotalAverage">Total Average</option>
+                <option value="TotalSum">Total Sum</option>
+                <option value="BestRun">Best Run</option>
+            </select>
+        </div>
+
+        <div class="btn-container" style="margin-top: 30px;">
+            <button type="button" class="btn btn-secondary" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+            <button type="button" class="btn btn-secondary" id="nextBtn" onclick="nextPrev(1)">Next</button>
+
+        </div>
+
+        <div class="step-container">
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+        </div>
+
+    </form>
+</div>
+
+<script>
+
+    var currentTab = 0;
+    showTab(currentTab);
+
+    function showTab(n) {
+    var x = document.getElementsByClassName("tab");
+    for (var i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+    }
+    x[n].style.display = "block";
+
+    if (n == 0) {
+        document.getElementById("prevBtn").style.display = "none";
+    } else {
+        document.getElementById("prevBtn").style.display = "inline";
+    }
+
+    var nextBtn = document.getElementById("nextBtn");
+    if (n == (x.length - 1)) {
+        nextBtn.innerHTML = "Submit";
+        // Change the onclick behavior to submit the form
+        nextBtn.onclick = function() {
+            document.getElementById("regForm").submit();
+        };
+    } else {
+        nextBtn.innerHTML = "Next";
+        // Reset the onclick behavior to navigate to the next tab
+        nextBtn.onclick = function() {
+            nextPrev(1);
+        };
+    }
+
+    fixStepIndicator(n);
+    }
+
+    function nextPrev(n) {
+        var x = document.getElementsByClassName("tab");
+        if (n == 1 && !validateForm()) return false;
+        x[currentTab].style.display = "none";
+        currentTab = currentTab + n;
+        showTab(currentTab);
+    }
+
+    function validateForm() {
+        var x, y, i, valid = true;
+        x = document.getElementsByClassName("tab");
+        y = x[currentTab].getElementsByTagName("input");
+        for (i = 0; i < y.length; i++) {
+            if (y[i].value == "") {
+                y[i].className += " invalid";
+                valid = false;
+            }
+        }
+        return valid;
+    }
+
+    function fixStepIndicator(n) {
+        var i, x = document.getElementsByClassName("step");
+        for (i = 0; i < x.length; i++) {
+            x[i].className = x[i].className.replace(" active", "");
+        }
+        for (i = 0; i <= n; i++) {
+            x[i].className += " active";
+        }
+    }
+
+    function generateJudgeNameInputs() {
+        var judgeCount = parseInt(document.querySelector('input[name="judgecount"]:checked').value);
+        var judgeNamesDiv = document.getElementById("judgeNames");
+        judgeNamesDiv.innerHTML = ""; // Clear previous content
+
+        for (var i = 1; i <= judgeCount; i++) {
+            var inputLabel = document.createElement("label");
+            inputLabel.htmlFor = "judgeName" + i;
+            inputLabel.innerText = "Judge " + i + " Name:";
+
+            var inputField = document.createElement("input");
+            inputField.type = "text";
+            inputField.name = "judgeName" + i;
+            inputField.id = "judgeName" + i;
+            inputField.className = "form-control";
+            inputField.placeholder = "Enter judge " + i + " name";
+            inputField.required = true;
+
+            // Append the label and input field to the judgeNamesDiv
+            judgeNamesDiv.appendChild(inputLabel);
+            judgeNamesDiv.appendChild(inputField);
+        }
+    }
+
+    // Call the function when the page loads to handle initial state
+
+    // event listener to the judge count radio buttons to call the function when changed
+    var judgeCountRadios = document.querySelectorAll('input[name="judgecount"]');
+    for (var i = 0; i < judgeCountRadios.length; i++) {
+        judgeCountRadios[i].addEventListener("change", generateJudgeNameInputs);
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,29 @@
+
+{% extends "layout.html" %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block main %}
+<h2 style="padding: 2px; height: 150px;">Login to F.A.S.T. </h2>
+<div class="container">
+    <form action="/login" method="post" style="justify-content: center; align-items:center;">
+        <div class="mb-3">
+            <label for="username" class="form-label">input your username</label>
+            <input type="text" style="background-color:#d3d3d9;" class="form-control" id="username" name="username" placeholder="Username" required>
+            <i class="fa fa-user" aria-hidden="true"></i>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">input your Password</label>
+            <input type="password" style="background-color:#d3d3d9;" placeholder="Password" class="form-control" id="password" name="password" required>
+            <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+        </div>
+        <button type="submit" class="btn btn-secondary">Login</button>
+    </form>
+    <br>
+    <p></p>
+    <a href="/register" style="color:#3F4D47">Do you have a Judge user account yet ?</a>
+    <br>
+</div>
+{% endblock %}

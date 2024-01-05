@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+<h2>New Judge Registration</h2>
+<br>
+
+    <div class="container">
+
+        <form action="/register" method="post">
+            <div class="mb-3">
+                <label for="username" class="form-label">Provide a valid username </label>
+                <input type="text" style="background-color:#d3d3d9;" placeholder="Username" class="form-control" id="username" name="username" required>
+                <i class="fa fa-user" aria-hidden="true"></i>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Provide a valid password</label>
+                <input type="password" style="background-color:#d3d3d9;" placeholder="Password" class="form-control" id="password" name="password" required>
+                <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+            </div>
+            <div class="mb-3">
+                <label for="confirmation" class="form-label">Confirm provided password</label>
+                <input type="password" style="background-color:#d3d3d9;" placeholder="Password" class="form-control" id="confirmation" name="confirmation" required>
+                <i class="fa fa-lock" aria-hidden="true"></i>
+            </div>
+            <button type="submit" class="btn btn-secondary">Register</button>
+        </form>
+    </div>
+    <br>
+    <br>
+{% endblock %}

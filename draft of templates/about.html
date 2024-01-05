@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    About FAST
+{% endblock %}
+
+{% block main %}
+<div class="about-section">
+    <h1>About FAST</h1>
+    <p><h3>Freestyle Action Sport Tournament Score Keeper or F.A.S.T./sk for short, is a Web application where the judges can quickly and easily judge and score an action sport competition</h3></p>
+    <div style="text-align: left;">
+      <p><h4>FAST/sk is designed to streamline the process of scoring competitions and events across various sports and activities. Whether you're managing a dance competition, a sports event, or any competitive activity, FAST offers a versatile and user-friendly platform to handle scoring, judging, and result calculation.</h4>
+      </p>
+    </div>
+  <div class="row">
+    <div class="column">
+      <div class="card">
+        <img src="/static/images/espnjudges.jfif">
+        <div class="containerrr">
+          <h2 style="color:black;">Jose Rodall</h2>
+          <p class="title" style="color:black;">App's Developer - Republic of Panamá</p>
+          <p style="color:black; text-align:left"> I'm a Learning and Development professional. Having studied Travel and Tourism and after learning the ropes of L&D, I now have embarked on the journey of learning about computer sciences and software development. </p>
+          <p style="color:black; text-align:left">I have joined the CS50x EdX online program, and FAST is part of my final project assignment. I hope you enjoy using this tool and find it usefull.</p>
+          <p style="color:black">rodall.jose@gmail.com</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="column2">
+      <div class="card2">
+        <div class="container">
+          <br>
+          <p><h2>How to Use</h2>
+          </p>
+
+          <ul class="list-group list-group">
+            <li class="list-group-item"><h3>Create an Account:</h3> <h5>Judges and administrators can create accounts on the FAST platform.</h5></li>
+            <li class="list-group-item"><h3>Event Setup:</h3> <h5>Set up a new event by providing details such as event name, date, sport, competitor count, and judge count.</h5></li>
+            <li class="list-group-item"><h3>Competitor Enrollment:</h3> <h5>Enroll competitors in the event, capturing essential details like name, age, and origin.</h5></li>
+            <li class="list-group-item"><h3>Scoring:</h3> <h5>Judges input scores for each competitor, and FAST calculates final scores based on the chosen scoring type.</h5></li>
+            <li class="list-group-item"><h3>Results:</h3> <h5>Explore detailed event results, including individual scores, rankings, and overall standings.</h5></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="column2">
+      <div class="card2">
+        <div class="container">
+          <br>
+          <p></p>
+          <br>
+          <p><strong>Ready to start <b>Score</b> an event? </strong></p>
+          <a class = "btn btn-secondary" href="/create" id="createbtn"><h2>Create New Event</h2></a>
+          <br>
+          <br>
+          <p></p>
+          <br>
+          <br>
+          <p><strong>Need to create a Judge <b>Account</b>? </strong></p>
+          <a class = "btn btn-secondary" href="/register" id="regbtn"><h2>Register</h2></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  </div>
+
+
+  <div>
+    <p> Score your event today !!  </p>
+  </div>
+
+{% endblock %}

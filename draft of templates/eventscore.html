@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block title %}
+     Event Scoring
+{% endblock %}
+
+{% block main %}
+<div class="header" style="margin-top: 10px;">
+    <h1 name="event_name"><strong>{{ event_name }}</strong></b></h1>
+    <hr class="border border-secondary border-3 opacity-85;" style="color:#3b3838">
+
+    <form method="post" action="{{ url_for('results') }}" >
+        <div class="d-flex justify-content-center align-items-center" style="height: 35vh;">
+            <div class="card text-white bg-secondary mb-3" style="max-width: 30rem;">
+                <div class="card-header"><h4><b>{{ event_name }} - Run {{ run }}</b></h4></div>
+
+                <div class="card-body">
+                    <h5 class="card-title"> <p><strong>Total Competitors:</strong> <h1><b>{{ competitor_count }}</b></h1></p></h5>
+                    <p class="card-text"><strong>Judges scoring this event:  {{ judge_count }}</strong></p>
+                    <p class="card-text"><strong>Judge scores will be combined by:  {{ jaggregatekind }}</p>
+                    <p class="card-text"><strong>Final scores calculate by:  {{ scoring_type }}</p>
+                </div>
+            </div>
+        </div>
+    </form>  <!-- for test only  -->
+        {% for run in range(1, runs + 1) %}
+    <form id="compform" method="post" action="{{ url_for('eventscore') }}">
+        <div class="container-fluid" >
+            <h2> Run #{{ run }}</h2>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th><h3>Competitor</h3></th>
+                    <th><h3>Score</h3></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for competitor in competitors %} <!-- Loop through competitors and create input fields -->
+                <tr>
+                    <td id="compnme">{{ competitor.name }}</td>
+                    <td id="compscore"><input type="number" name="scores{{ loop.index }}" required placeholder="0.00" step="0.01" id="score"></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endfor %}
+        <button type="submit" class="btn btn-secondary" style="margin-top: 5px;">Submit Scores</button>
+    </form>
+    <br>
+    <hr class="border border-secondary border-3 opacity-85;" style="color:#3b3838">
+</div>
+{% endblock %}
